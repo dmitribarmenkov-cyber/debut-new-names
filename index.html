@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f1110">
+  <title>ДЕБЮТ° — каталог новых имён</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f1110;
+      --panel: #171a18;
+      --panel-2: #1e2220;
+      --panel-3: #242925;
+      --line: #2a2f2c;
+      --line-soft: rgba(255,255,255,.065);
+      --text: #edf0ea;
+      --muted: #919991;
+      --muted-2: #687169;
+      --lime: #b6f34a;
+      --lime-ink: #19210d;
+      --yellow: #ffcc00;
+      --blue: #4c75a3;
+      --red: #ff7474;
+      --radius: 18px;
+      --shadow: 0 18px 56px rgba(0,0,0,.24);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 74% -18%, rgba(182,243,74,.075), transparent 38%),
+        radial-gradient(ellipse at 0% 48%, rgba(90,116,87,.07), transparent 34%),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 3px;
+    }
+    a { color: inherit; text-decoration: none; }
+    .app-frame { min-height: 100vh; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(255,255,255,.065);
+      background: rgba(15,17,16,.88);
+      backdrop-filter: blur(18px);
+    }
+    .topbar-inner {
+      max-width: 1500px;
+      min-height: 78px;
+      padding: 12px 30px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(205px,1fr) auto minmax(205px,1fr);
+      gap: 24px;
+      align-items: center;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; width: max-content; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 13px;
+      display: grid; place-items: center;
+      background: var(--lime); color: var(--lime-ink);
+      font-weight: 950; font-size: 15px; letter-spacing: -.08em;
+      box-shadow: 0 0 28px rgba(182,243,74,.18);
+    }
+    .brand-word { font-weight: 900; font-size: 17px; letter-spacing: .035em; line-height: 1.1; }
+    .brand-caption { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; letter-spacing: .095em; text-transform: uppercase; }
+    .role-switch {
+      justify-self: center;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px; border: 1px solid var(--line); border-radius: 14px;
+      background: #141715;
+    }
+    .role-tab {
+      border: 0; border-radius: 10px; padding: 9px 16px;
+      background: transparent; color: var(--muted); cursor: pointer;
+      font-size: 12px; font-weight: 750; transition: .18s ease;
+      white-space: nowrap;
+    }
+    .role-tab:hover { color: var(--text); background: rgba(255,255,255,.04); }
+    .role-tab.active { color: var(--lime-ink); background: var(--lime); box-shadow: 0 5px 18px rgba(182,243,74,.12); }
+    .topbar-right { justify-self: end; position: relative; }
+    .profile-button {
+      display: flex; align-items: center; gap: 10px; padding: 6px 10px 6px 6px;
+      border: 1px solid var(--line); border-radius: 14px; background: #171a18;
+      text-align: left; cursor: pointer; transition: border-color .18s ease, background .18s ease;
+    }
+    .profile-button:hover { border-color: #515a50; background: #1b201c; }
+    .profile-button-copy { min-width: 84px; }
+    .profile-button-name { display: block; font-size: 12px; font-weight: 760; }
+    .profile-button-sub { display: block; margin-top: 1px; color: var(--muted); font-size: 10px; }
+    .chevron { color: var(--muted); font-size: 11px; margin-left: 2px; }
+    .profile-menu {
+      position: absolute; right: 0; top: calc(100% + 9px); width: 220px; z-index: 50;
+      padding: 7px; border: 1px solid var(--line); border-radius: 15px;
+      background: #1b201d; box-shadow: var(--shadow);
+    }
+    .profile-menu button { width: 100%; border: 0; border-radius: 9px; padding: 10px; background: transparent; color: var(--text); text-align: left; font-size: 12px; cursor: pointer; }
+    .profile-menu button:hover { background: rgba(255,255,255,.06); }
+    .profile-menu .menu-note { padding: 8px 10px 5px; color: var(--muted); font-size: 10px; }
+
+    .shell {
+      max-width: 1500px; margin: 0 auto; padding: 27px 30px 58px;
+      display: grid; grid-template-columns: 218px minmax(0,1fr); gap: 28px; align-items: start;
+    }
+    .sidebar { position: sticky; top: 101px; min-width: 0; }
+    .side-label { padding: 6px 12px 10px; color: #727b73; font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .side-nav { display: grid; gap: 4px; }
+    .side-link {
+      width: 100%; display: flex; align-items: center; gap: 11px;
+      padding: 10px 12px; border: 1px solid transparent; border-radius: 12px;
+      background: transparent; color: #a5ada5; text-align: left; cursor: pointer;
+      font-size: 12px; font-weight: 640; transition: .17s ease;
+    }
+    .side-link:hover { background: rgba(255,255,255,.045); color: var(--text); }
+    .side-link.current { color: var(--lime); background: rgba(182,243,74,.08); border-color: rgba(182,243,74,.12); }
+    .side-icon { width: 19px; text-align: center; font-size: 15px; }
+    .side-count { margin-left: auto; min-width: 20px; padding: 1px 6px; border-radius: 99px; background: #292e2a; color: #b1b9b0; text-align: center; font-size: 10px; }
+    .sidebar-card {
+      margin-top: 26px; padding: 15px; overflow: hidden; position: relative;
+      border: 1px solid var(--line); border-radius: 16px;
+      background: linear-gradient(145deg, rgba(182,243,74,.08), rgba(30,34,32,.92) 62%);
+    }
+    .sidebar-card::after { content: ""; position: absolute; width: 95px; height: 95px; right: -38px; top: -36px; border: 1px solid rgba(182,243,74,.12); border-radius: 50%; box-shadow: 0 0 0 15px rgba(182,243,74,.025), 0 0 0 30px rgba(182,243,74,.018); }
+    .sidebar-card-icon { font-size: 20px; margin-bottom: 12px; }
+    .sidebar-card strong { display: block; font-size: 12px; }
+    .sidebar-card p { color: var(--muted); font-size: 10px; line-height: 1.6; margin: 5px 0 12px; max-width: 160px; }
+    .local-status { display: inline-flex; align-items: center; gap: 6px; color: #b7c1b7; font-size: 9px; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 9px rgba(182,243,74,.55); }
+    .main-content { min-width: 0; }
+    .page-intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin: 0 0 23px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 9px; color: var(--lime); font-size: 9px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow .eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--lime); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 7px; font-size: clamp(27px,3vw,38px); line-height: 1.12; letter-spacing: -.045em; font-weight: 830; }
+    h1 .accent { color: var(--lime); }
+    .page-intro p { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .intro-chip { align-self: center; flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 99px; color: #b8c0b7; background: rgba(23,26,24,.8); font-size: 10px; white-space: nowrap; }
+    .intro-chip b { color: var(--lime); font-weight: 750; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(23,26,24,.92); box-shadow: var(--shadow); }
+    .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin: 0 0 15px; }
+    .section-heading h2 { margin: 0; font-size: 19px; letter-spacing: -.03em; line-height: 1.2; }
+    .section-heading p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+    .section-kicker { display: block; margin-bottom: 5px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .subtle-count { color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .muted { color: var(--muted); }
+    .small { font-size: 11px; }
+
+    /* Avatar and cover placeholders: gradients only, no external images. */
+    .avatar { flex: 0 0 auto; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; background: linear-gradient(145deg,#d6fc91,#4a6f38); color: #1b2711; font-weight: 900; letter-spacing: -.04em; box-shadow: inset 0 1px 0 rgba(255,255,255,.25); }
+    .avatar.small-avatar { width: 32px; height: 32px; border-radius: 11px; font-size: 10px; }
+    .avatar.large-avatar { width: 78px; height: 78px; border-radius: 24px; font-size: 21px; }
+    .avatar.avatar-violet { background: linear-gradient(145deg,#e1bcff,#7653a5); color: #241735; }
+    .avatar.avatar-blue { background: linear-gradient(145deg,#aae7ef,#397c8a); color: #14343a; }
+    .avatar.avatar-amber { background: linear-gradient(145deg,#ffe2a2,#ae653b); color: #3c2412; }
+    .avatar.avatar-rose { background: linear-gradient(145deg,#ffd2db,#aa5770); color: #401e2c; }
+    .cover { position: relative; display: grid; place-items: center; overflow: hidden; flex: 0 0 auto; border-radius: 15px; isolation: isolate; background: linear-gradient(135deg,#b6f34a,#41622e); color: rgba(14,21,12,.86); }
+    .cover::before { content: ""; position: absolute; z-index: -1; width: 78%; aspect-ratio: 1; left: -20%; top: -33%; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; box-shadow: 0 0 0 13px rgba(255,255,255,.07), 0 0 0 28px rgba(255,255,255,.045); }
+    .cover::after { content: ""; position: absolute; z-index: -1; width: 64%; aspect-ratio: 1; right: -23%; bottom: -47%; border-radius: 50%; background: rgba(15,17,16,.18); }
+    .cover--violet { background: linear-gradient(145deg,#dfb6ff,#6453a5); color: #251637; }
+    .cover--blue { background: linear-gradient(145deg,#b0eff4,#398392); color: #12363a; }
+    .cover--amber { background: linear-gradient(145deg,#ffe5a0,#ba753d); color: #432713; }
+    .cover--rose { background: linear-gradient(145deg,#ffd0d7,#b15d76); color: #451f2e; }
+    .cover--mint { background: linear-gradient(145deg,#b6f5d4,#449279); color: #163b2d; }
+    .cover-mark { font-size: 31px; font-weight: 950; letter-spacing: -.08em; opacity: .85; }
+    .cover-emoji { position: absolute; right: 12px; bottom: 7px; font-size: 19px; opacity: .88; }
+    .cover-small { width: 61px; height: 61px; border-radius: 14px; }
+    .cover-small .cover-mark { font-size: 22px; }
+    .cover-card { width: 100%; aspect-ratio: 1.35/1; border-radius: 16px; }
+    .cover-card .cover-mark { font-size: clamp(38px,5vw,61px); }
+    .cover-card .cover-emoji { right: 17px; bottom: 10px; font-size: 23px; }
+
+    /* Artist workspace */
+    .artist-top-grid { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(280px,.85fr); gap: 15px; margin-bottom: 17px; }
+    .profile-card { min-height: 220px; padding: 22px; position: relative; overflow: hidden; background: linear-gradient(130deg,rgba(182,243,74,.055),rgba(23,26,24,.97) 43%); }
+    .profile-card::after { content: ""; position: absolute; right: -75px; top: -112px; width: 260px; height: 260px; border: 1px solid rgba(182,243,74,.11); border-radius: 50%; box-shadow: 0 0 0 22px rgba(182,243,74,.025), 0 0 0 48px rgba(182,243,74,.018); pointer-events: none; }
+    .profile-main { display: flex; align-items: flex-start; gap: 17px; position: relative; z-index: 1; }
+    .profile-copy { min-width: 0; flex: 1; }
+    .profile-title-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .profile-title-line h2 { margin: 0; font-size: 24px; letter-spacing: -.04em; }
+    .profile-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 7px; color: #c9d0c7; background: rgba(255,255,255,.065); font-size: 9px; }
+    .profile-meta { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 8px; color: #b4bcb3; font-size: 11px; }
+    .profile-bio { max-width: 460px; margin: 13px 0 0; color: #a4aca3; font-size: 12px; }
+    .profile-actions { position: absolute; right: 20px; bottom: 18px; z-index: 2; display: flex; align-items: center; gap: 13px; }
+    .visibility-control { display: flex; align-items: center; gap: 8px; color: #aab2a9; font-size: 10px; }
+    .switch { width: 35px; height: 20px; position: relative; padding: 0; border: 1px solid #414941; border-radius: 99px; background: #2a302b; cursor: pointer; transition: .2s; }
+    .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 50%; background: #858e85; transition: .2s; }
+    .switch.on { border-color: rgba(182,243,74,.56); background: rgba(182,243,74,.3); }
+    .switch.on::after { left: 18px; background: var(--lime); box-shadow: 0 0 9px rgba(182,243,74,.4); }
+    .button, .button-secondary, .button-quiet, .button-danger {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      min-height: 36px; padding: 8px 12px; border: 1px solid transparent; border-radius: 10px;
+      cursor: pointer; font-size: 11px; font-weight: 760; transition: .18s ease;
+    }
+    .button { background: var(--lime); color: #1a220e; box-shadow: 0 5px 16px rgba(182,243,74,.1); }
+    .button:hover { background: #c7ff61; transform: translateY(-1px); }
+    .button-secondary { border-color: #384039; background: #222723; color: #dfe5dd; }
+    .button-secondary:hover { border-color: #626e60; background: #282e29; }
+    .button-quiet { border-color: transparent; background: transparent; color: #abb3aa; }
+    .button-quiet:hover { color: var(--text); background: rgba(255,255,255,.06); }
+    .button-danger { border-color: rgba(255,116,116,.22); color: #ffaaaa; background: rgba(255,116,116,.08); }
+    .button-danger:hover { background: rgba(255,116,116,.15); }
+    .request-card { padding: 19px; position: relative; overflow: hidden; background: linear-gradient(145deg,#20261e,#191d1a 68%); }
+    .request-card::after { content: "✳"; position: absolute; right: 13px; top: 9px; color: rgba(182,243,74,.10); font-size: 77px; line-height: 1; transform: rotate(-12deg); }
+    .request-pill { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 7px; background: rgba(182,243,74,.1); color: var(--lime); font-size: 9px; font-weight: 800; }
+    .request-card h2 { position: relative; z-index: 1; margin: 13px 0 5px; font-size: 16px; letter-spacing: -.025em; }
+    .request-card p { position: relative; z-index: 1; margin: 0 0 12px; color: #a4aca3; font-size: 11px; }
+    .request-from { color: var(--text); font-weight: 730; }
+    .request-quote { position: relative; z-index: 1; margin: 0 0 14px; padding-left: 10px; border-left: 2px solid rgba(182,243,74,.38); color: #869187; font-size: 10px; }
+    .request-card .button { position: relative; z-index: 1; min-height: 32px; }
+    .artist-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 21px; }
+    .metric-card { padding: 12px 14px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 14px; background: rgba(23,26,24,.75); }
+    .metric-icon { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 10px; background: #222823; font-size: 14px; }
+    .metric-number { display: block; font-size: 15px; font-weight: 800; line-height: 1.15; }
+    .metric-label { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; }
+    .artist-workspace-grid { display: grid; grid-template-columns: minmax(310px,.85fr) minmax(0,1.15fr); gap: 15px; align-items: start; }
+    .form-card, .tracks-card { padding: 19px; }
+    .form-card .section-heading { margin-bottom: 17px; }
+    .form-note { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 9px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px 10px; }
+    .field { min-width: 0; display: block; }
+    .field.full { grid-column: 1/-1; }
+    .field label, .field-label { display: block; margin: 0 0 6px; color: #c0c7bf; font-size: 10px; font-weight: 700; }
+    .optional { color: #727b72; font-weight: 500; }
+    .input, .select, .textarea {
+      width: 100%; min-width: 0; border: 1px solid #323a34; border-radius: 10px;
+      background: #111412; color: var(--text); padding: 10px 11px; font-size: 11px;
+      transition: border-color .16s, box-shadow .16s;
+    }
+    .input::placeholder, .textarea::placeholder { color: #647066; }
+    .input:hover, .select:hover, .textarea:hover { border-color: #49534a; }
+    .select { padding-right: 28px; cursor: pointer; }
+    .textarea { resize: vertical; min-height: 92px; line-height: 1.55; }
+    .field-error { display: block; min-height: 0; margin-top: 4px; color: #ff9999; font-size: 9px; }
+    .field.has-error .input, .field.has-error .select { border-color: rgba(255,116,116,.75); }
+    .form-actions { display: flex; gap: 8px; margin-top: 15px; }
+    .form-actions .button { flex: 1; }
+    .form-actions .button-secondary { flex: 0 0 auto; }
+    .platform-hint { grid-column: 1/-1; margin: -2px 0 0; color: #737d74; font-size: 9px; }
+    .track-list { display: grid; gap: 9px; }
+    .track-row { display: grid; grid-template-columns: 61px minmax(0,1fr); gap: 11px; padding: 11px; border: 1px solid #2b312d; border-radius: 14px; background: #1a1e1b; }
+    .track-row-main { min-width: 0; }
+    .track-row-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .track-row h3 { margin: 0; overflow: hidden; color: #edf0ea; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; letter-spacing: -.01em; }
+    .track-meta { margin-top: 3px; color: var(--muted); font-size: 9px; }
+    .track-status { display: inline-flex; align-items: center; gap: 5px; flex: 0 0 auto; padding: 4px 7px; border-radius: 7px; font-size: 8px; font-weight: 800; white-space: nowrap; }
+    .track-status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .status-published { color: var(--lime); background: rgba(182,243,74,.09); }
+    .status-pending { color: #ffd46d; background: rgba(255,204,0,.09); }
+    .track-row-bottom { display: flex; align-items: center; justify-content: space-between; gap: 7px; margin-top: 10px; }
+    .track-row-actions { display: flex; align-items: center; gap: 2px; }
+    .icon-button { width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border: 1px solid transparent; border-radius: 8px; background: transparent; color: #8d978e; cursor: pointer; font-size: 14px; }
+    .icon-button:hover { border-color: #384039; background: #252b26; color: var(--text); }
+    .icon-button.danger:hover { border-color: rgba(255,116,116,.25); color: #ff9e9e; background: rgba(255,116,116,.08); }
+    .platform-links { display: flex; align-items: center; gap: 5px; min-width: 0; }
+    .platform-button {
+      min-height: 27px; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+      padding: 5px 8px; border: 1px solid transparent; border-radius: 8px;
+      font-size: 9px; font-weight: 820; white-space: nowrap; transition: .16s ease;
+    }
+    .platform-button.yandex { background: var(--yellow); color: #28220b; }
+    .platform-button.yandex:hover { background: #ffda3d; transform: translateY(-1px); }
+    .platform-button.vk { background: var(--blue); color: #fff; }
+    .platform-button.vk:hover { background: #5c86b5; transform: translateY(-1px); }
+    .platform-button.disabled { background: #292e2b; border-color: #383e39; color: #747d75; cursor: not-allowed; font-weight: 700; }
+    .platform-button.disabled small { font-size: 8px; font-weight: 500; color: #69736a; }
+    .platform-button.compact { min-height: 25px; padding: 4px 7px; font-size: 8px; }
+    .empty-state { padding: 25px 15px; border: 1px dashed #353c36; border-radius: 13px; color: var(--muted); text-align: center; font-size: 11px; }
+    .empty-state .empty-icon { display: block; margin-bottom: 8px; font-size: 22px; }
+
+    /* Label scouting workspace */
+    .filter-card { padding: 17px; margin-bottom: 17px; }
+    .filter-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .filter-card-top strong { font-size: 12px; }
+    .filter-card-top span { color: var(--muted); font-size: 10px; }
+    .filter-grid { display: grid; grid-template-columns: minmax(190px,1.6fr) repeat(3,minmax(120px,.78fr)) auto; gap: 8px; align-items: end; }
+    .filter-grid .field label { font-size: 9px; }
+    .filter-grid .input, .filter-grid .select { min-height: 38px; }
+    .filter-grid .button { min-height: 38px; white-space: nowrap; }
+    .saved-searches { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .saved-search-label { color: var(--muted); font-size: 9px; margin-right: 2px; }
+    .search-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 8px; border: 1px solid #363e37; border-radius: 99px; background: #202521; color: #bdc5bc; cursor: pointer; font-size: 9px; }
+    .search-chip:hover { border-color: rgba(182,243,74,.45); color: var(--lime); }
+    .label-layout { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(250px,.72fr); gap: 15px; align-items: start; }
+    .results-column { min-width: 0; }
+    .artist-results { display: grid; gap: 11px; }
+    .artist-card { padding: 16px; border: 1px solid var(--line); border-radius: 17px; background: rgba(23,26,24,.9); box-shadow: 0 12px 35px rgba(0,0,0,.12); }
+    .artist-card-head { display: flex; align-items: center; gap: 11px; }
+    .artist-card-ident { flex: 1; min-width: 0; }
+    .artist-card-ident h3 { margin: 0; font-size: 15px; letter-spacing: -.025em; }
+    .artist-card-ident p { margin: 3px 0 0; color: var(--muted); font-size: 10px; }
+    .artist-head-actions { display: flex; align-items: center; gap: 6px; }
+    .favorite-button { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid #363e37; border-radius: 10px; background: #202521; color: #9ca69b; cursor: pointer; font-size: 17px; transition: .17s ease; }
+    .favorite-button:hover { border-color: rgba(182,243,74,.45); color: var(--lime); }
+    .favorite-button.is-favorite { border-color: rgba(182,243,74,.24); color: var(--lime); background: rgba(182,243,74,.1); }
+    .verified-tag { display: inline-flex; align-items: center; gap: 4px; margin: 12px 0 8px; color: #9ca89a; font-size: 9px; }
+    .verified-tag .check { color: var(--lime); font-weight: 900; }
+    .artist-description { margin: 0 0 10px; color: #9da69d; font-size: 11px; line-height: 1.55; }
+    .artist-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+    .soft-tag { padding: 4px 7px; border-radius: 7px; background: #252b26; color: #bdc6bc; font-size: 8px; }
+    .soft-tag.mood { color: #c6eaa1; background: rgba(182,243,74,.075); }
+    .artist-track-list { display: grid; gap: 7px; }
+    .artist-track-line { display: grid; grid-template-columns: minmax(100px,1fr) auto auto; gap: 8px; align-items: center; padding: 8px 9px; border: 1px solid #2b312d; border-radius: 11px; background: #1b201c; }
+    .artist-track-name { min-width: 0; }
+    .artist-track-name strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+    .artist-track-name small { display: block; margin-top: 2px; color: var(--muted); font-size: 8px; }
+    .playlist-add { width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid #364038; border-radius: 8px; background: #242a25; color: #b4beb3; cursor: pointer; font-size: 13px; }
+    .playlist-add:hover, .playlist-add.added { border-color: rgba(182,243,74,.35); color: var(--lime); background: rgba(182,243,74,.08); }
+    .artist-card-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+    .artist-card-actions .button-secondary, .artist-card-actions .button { min-height: 32px; padding: 7px 10px; font-size: 9px; }
+    .label-rail { display: grid; gap: 13px; }
+    .rail-card { padding: 16px; }
+    .rail-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .rail-title h3 { margin: 0; font-size: 13px; letter-spacing: -.02em; }
+    .rail-title .count { color: var(--muted); font-size: 9px; }
+    .playlist-list { display: grid; gap: 7px; }
+    .playlist-entry { display: flex; align-items: center; gap: 8px; padding: 7px; border: 1px solid #2c332d; border-radius: 10px; background: #1b201c; }
+    .playlist-entry .cover { width: 34px; height: 34px; border-radius: 9px; }
+    .playlist-entry .cover-mark { font-size: 14px; }
+    .playlist-entry-copy { min-width: 0; flex: 1; }
+    .playlist-entry-copy strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9px; }
+    .playlist-entry-copy small { display: block; overflow: hidden; margin-top: 2px; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; font-size: 8px; }
+    .remove-playlist { border: 0; background: transparent; color: #707a71; cursor: pointer; font-size: 13px; }
+    .remove-playlist:hover { color: #ff9e9e; }
+    .notes-save-label { color: #728071; font-size: 8px; }
+    .label-note-area { min-height: 120px; }
+    .label-account { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #2e352e; border-radius: 12px; background: #1b201c; }
+    .label-account-copy strong { display: block; font-size: 10px; }
+    .label-account-copy small { display: block; margin-top: 3px; color: var(--muted); font-size: 8px; }
+    .verified-account { margin-top: 11px; color: #a7b89a; font-size: 9px; }
+
+    /* Listener discovery */
+    .editorial-banner { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(240px,.7fr); gap: 17px; align-items: center; margin-bottom: 18px; padding: 19px 21px; overflow: hidden; position: relative; border: 1px solid #394338; border-radius: 19px; background: linear-gradient(112deg,rgba(182,243,74,.11),rgba(28,33,29,.96) 46%,#191d1a); }
+    .editorial-banner::after { content: "♫"; position: absolute; right: 19%; top: -39px; color: rgba(182,243,74,.07); font-size: 170px; font-weight: 900; line-height: 1; pointer-events: none; }
+    .editorial-banner-copy { position: relative; z-index: 1; }
+    .editorial-banner .eyebrow { margin-bottom: 7px; }
+    .editorial-banner h2 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.04em; }
+    .editorial-banner p { max-width: 520px; margin: 0; color: #9ea79e; font-size: 11px; }
+    .banner-note { position: relative; z-index: 1; justify-self: end; max-width: 230px; padding: 11px 13px; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; background: rgba(9,12,10,.28); color: #c0c9bf; font-size: 10px; }
+    .banner-note strong { display: block; margin-bottom: 3px; color: var(--lime); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .weekly-section { margin-bottom: 19px; }
+    .weekly-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+    .weekly-card { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 9px; align-items: center; min-width: 0; padding: 9px; border: 1px solid var(--line); border-radius: 13px; background: #171b18; }
+    .weekly-card .cover { width: 48px; height: 48px; border-radius: 11px; }
+    .weekly-card .cover-mark { font-size: 17px; }
+    .weekly-card-copy { min-width: 0; }
+    .editor-pick { display: block; margin-bottom: 3px; color: var(--lime); font-size: 7px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .weekly-card-copy strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9px; }
+    .weekly-card-copy small { display: block; overflow: hidden; margin-top: 3px; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; font-size: 8px; }
+    .city-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 15px; background: rgba(23,26,24,.78); }
+    .city-filter-label { margin-right: 5px; color: #c2c9c0; font-size: 10px; font-weight: 750; }
+    .city-chip { padding: 7px 10px; border: 1px solid #343c35; border-radius: 99px; background: #1d221e; color: #aab3a9; cursor: pointer; font-size: 9px; transition: .16s; }
+    .city-chip:hover { border-color: #657263; color: var(--text); }
+    .city-chip.active { border-color: rgba(182,243,74,.46); background: rgba(182,243,74,.11); color: var(--lime); }
+    .feed-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .feed-header h2 { margin: 0; font-size: 20px; letter-spacing: -.035em; }
+    .feed-header p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .track-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+    .discovery-card { min-width: 0; padding: 11px; border: 1px solid var(--line); border-radius: 17px; background: #171b18; transition: transform .18s ease, border-color .18s ease; }
+    .discovery-card:hover { transform: translateY(-2px); border-color: #414a41; }
+    .discovery-card-art { position: relative; }
+    .discovery-card-art .favorite-button { position: absolute; right: 9px; top: 9px; width: 34px; height: 34px; border-color: rgba(255,255,255,.14); background: rgba(14,17,15,.45); backdrop-filter: blur(8px); color: white; }
+    .discovery-card-art .favorite-button.is-favorite { color: var(--lime); border-color: rgba(182,243,74,.4); background: rgba(14,17,15,.72); }
+    .discovery-card-copy { padding: 12px 2px 2px; }
+    .discovery-card-copy h3 { overflow: hidden; margin: 0; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; letter-spacing: -.025em; }
+    .discovery-artist { display: flex; align-items: center; gap: 6px; margin-top: 6px; color: #aeb7ad; font-size: 10px; }
+    .artist-mini-avatar { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 7px; background: #303a31; color: #d2e9bd; font-size: 7px; font-weight: 850; }
+    .discovery-tags { display: flex; gap: 5px; margin-top: 9px; }
+    .discovery-card .platform-links { margin-top: 11px; }
+    .discovery-card .platform-button { flex: 1; min-height: 32px; font-size: 9px; }
+    .discovery-card .platform-button.disabled { font-size: 8px; }
+    .favorites-section { margin-top: 24px; }
+    .favorites-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .favorites-heading h2 { margin: 0; font-size: 18px; letter-spacing: -.03em; }
+    .favorites-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+    .favorite-row { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 9px; border: 1px solid var(--line); border-radius: 13px; background: #171b18; }
+    .favorite-row .cover { width: 43px; height: 43px; border-radius: 10px; }
+    .favorite-row .cover-mark { font-size: 16px; }
+    .favorite-row-copy { flex: 1; min-width: 0; }
+    .favorite-row-copy strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9px; }
+    .favorite-row-copy small { display: block; margin-top: 3px; color: var(--muted); font-size: 8px; }
+
+    /* Modals, toasts and footer */
+    #modal-root:empty { display: none; }
+    .modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(4,6,5,.73); backdrop-filter: blur(8px); animation: fadeIn .16s ease-out; }
+    .modal { width: min(100%,520px); max-height: min(90vh,800px); overflow-y: auto; border: 1px solid #3b443c; border-radius: 19px; background: #191e1a; box-shadow: 0 30px 100px rgba(0,0,0,.58); animation: riseIn .2s ease-out; }
+    .modal.modal-wide { width: min(100%,620px); }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; padding: 20px 21px 14px; border-bottom: 1px solid var(--line); }
+    .modal-head h2 { margin: 0; font-size: 18px; letter-spacing: -.03em; }
+    .modal-head p { margin: 5px 0 0; color: var(--muted); font-size: 10px; }
+    .modal-close { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid #343c35; border-radius: 9px; background: #222723; color: #aeb7ad; cursor: pointer; font-size: 17px; }
+    .modal-close:hover { color: var(--text); }
+    .modal-body { padding: 17px 21px 21px; }
+    .modal-form { display: grid; gap: 12px; }
+    .modal-warning { display: flex; gap: 9px; align-items: flex-start; padding: 10px 11px; border: 1px solid rgba(255,204,0,.15); border-radius: 10px; background: rgba(255,204,0,.055); color: #c5b985; font-size: 9px; line-height: 1.55; }
+    .modal-form-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 3px; }
+    .chat-dialog { width: min(100%,560px); }
+    .chat-window { display: flex; flex-direction: column; height: min(50vh,410px); min-height: 230px; }
+    .chat-messages { display: flex; flex: 1; flex-direction: column; gap: 11px; overflow-y: auto; padding: 16px 20px; }
+    .chat-day { align-self: center; padding: 4px 8px; border-radius: 99px; background: #252b26; color: #89938a; font-size: 8px; }
+    .chat-message { display: flex; flex-direction: column; align-self: flex-start; max-width: 78%; gap: 4px; }
+    .chat-message.mine { align-self: flex-end; align-items: flex-end; }
+    .chat-who { color: #8f998f; font-size: 8px; }
+    .chat-bubble { padding: 9px 11px; border: 1px solid #303831; border-radius: 5px 13px 13px 13px; background: #232924; color: #dce2da; font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
+    .chat-message.mine .chat-bubble { border-color: rgba(182,243,74,.2); border-radius: 13px 5px 13px 13px; background: rgba(182,243,74,.11); color: #e4eed9; }
+    .chat-time { color: #717b72; font-size: 8px; }
+    .chat-composer { display: flex; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--line); }
+    .chat-composer .input { flex: 1; }
+    .chat-composer .button { min-width: 80px; }
+    #toast-root { position: fixed; right: 22px; bottom: 21px; z-index: 150; display: grid; gap: 8px; pointer-events: none; }
+    .toast { min-width: 220px; max-width: min(380px,calc(100vw - 40px)); display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1px solid #3b4934; border-radius: 12px; background: #202720; color: #e5eddf; box-shadow: 0 16px 45px rgba(0,0,0,.38); font-size: 11px; animation: toastIn .22s ease-out; }
+    .toast-icon { width: 21px; height: 21px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 7px; background: rgba(182,243,74,.14); color: var(--lime); font-weight: 900; }
+    .toast.error { border-color: rgba(255,116,116,.3); background: #281e1e; }
+    .toast.error .toast-icon { background: rgba(255,116,116,.13); color: #ff9292; }
+    .app-footer { max-width: 1500px; margin: 0 auto; padding: 0 30px 24px; display: flex; align-items: center; justify-content: space-between; gap: 14px; color: #657067; font-size: 9px; }
+    .footer-logo { color: #aab4a8; font-weight: 850; letter-spacing: .04em; }
+    .footer-note { display: inline-flex; align-items: center; gap: 6px; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes riseIn { from { transform: translateY(8px) scale(.99); opacity: .6; } to { transform: translateY(0) scale(1); opacity: 1; } }
+    @keyframes toastIn { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    @media (max-width: 1180px) {
+      .topbar-inner { padding-left: 22px; padding-right: 22px; grid-template-columns: minmax(170px,1fr) auto minmax(170px,1fr); gap: 13px; }
+      .shell { padding-left: 22px; padding-right: 22px; grid-template-columns: 196px minmax(0,1fr); gap: 20px; }
+      .filter-grid { grid-template-columns: minmax(150px,1.3fr) repeat(3,minmax(105px,.75fr)); }
+      .filter-grid .button { grid-column: 1/-1; justify-self: end; }
+      .track-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .weekly-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width: 900px) {
+      .topbar-inner { min-height: auto; grid-template-columns: 1fr auto; padding: 12px 17px; gap: 10px; }
+      .role-switch { grid-column: 1/-1; grid-row: 2; justify-self: stretch; justify-content: center; }
+      .role-tab { flex: 1; }
+      .topbar-right { grid-column: 2; grid-row: 1; }
+      .shell { display: block; padding: 18px 17px 40px; }
+      .sidebar { position: static; margin-bottom: 20px; }
+      .sidebar > .side-label, .sidebar-card { display: none; }
+      .side-nav { display: flex; gap: 5px; overflow-x: auto; padding: 4px 1px 8px; scrollbar-width: thin; }
+      .side-link { width: auto; min-width: max-content; padding: 8px 11px; border-color: #262c27; background: rgba(23,26,24,.75); }
+      .side-count { margin-left: 2px; }
+      .artist-top-grid { grid-template-columns: minmax(0,1.4fr) minmax(230px,.8fr); }
+      .artist-workspace-grid { grid-template-columns: minmax(0,1fr); }
+      .label-layout { grid-template-columns: minmax(0,1.35fr) minmax(220px,.75fr); }
+      .app-footer { padding-left: 17px; padding-right: 17px; }
+    }
+    @media (max-width: 650px) {
+      .topbar-inner { padding: 10px 13px; }
+      .brand-caption { display: none; }
+      .profile-button-copy { display: none; }
+      .profile-button { padding: 5px; gap: 4px; }
+      .profile-button .chevron { display: none; }
+      .role-tab { padding: 8px 7px; font-size: 10px; }
+      .shell { padding: 15px 13px 34px; }
+      .page-intro { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 17px; }
+      .page-intro p { font-size: 11px; }
+      .intro-chip { align-self: flex-start; }
+      .artist-top-grid, .label-layout, .editorial-banner { grid-template-columns: 1fr; }
+      .profile-card { padding: 17px; min-height: 0; padding-bottom: 76px; }
+      .profile-main { gap: 12px; }
+      .avatar.large-avatar { width: 62px; height: 62px; border-radius: 19px; font-size: 17px; }
+      .profile-title-line h2 { font-size: 20px; }
+      .profile-actions { left: 17px; right: 17px; bottom: 15px; justify-content: space-between; }
+      .profile-bio { font-size: 11px; }
+      .artist-metrics { gap: 6px; }
+      .metric-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 10px; }
+      .metric-icon { width: 27px; height: 27px; }
+      .metric-number { font-size: 13px; }
+      .metric-label { font-size: 8px; }
+      .form-card, .tracks-card { padding: 15px; }
+      .form-grid { grid-template-columns: minmax(0,1fr); }
+      .field.full { grid-column: auto; }
+      .platform-hint { grid-column: auto; }
+      .filter-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .filter-grid .search-field { grid-column: 1/-1; }
+      .filter-grid .button { grid-column: 1/-1; width: 100%; }
+      .artist-track-line { grid-template-columns: minmax(75px,1fr) auto; }
+      .artist-track-line .playlist-add { grid-column: 2; grid-row: 1; }
+      .artist-track-line .platform-links { grid-column: 1/-1; }
+      .artist-card-actions { display: grid; grid-template-columns: 1fr 1fr; }
+      .weekly-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
+      .weekly-card { grid-template-columns: 40px minmax(0,1fr); gap: 7px; padding: 7px; }
+      .weekly-card .cover { width: 40px; height: 40px; }
+      .banner-note { justify-self: stretch; max-width: none; }
+      .track-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .discovery-card { padding: 8px; }
+      .discovery-card-copy h3 { font-size: 12px; }
+      .discovery-card .platform-links { flex-direction: column; align-items: stretch; }
+      .discovery-card .platform-button { width: 100%; }
+      .favorites-grid { grid-template-columns: 1fr; }
+      .app-footer { align-items: flex-start; flex-direction: column; padding: 0 13px 18px; }
+      .chat-message { max-width: 88%; }
+      #toast-root { right: 12px; bottom: 12px; }
+    }
+    @media (max-width: 380px) {
+      .track-grid { grid-template-columns: 1fr; }
+      .weekly-grid { grid-template-columns: 1fr; }
+      .artist-metrics { grid-template-columns: 1fr; }
+      .metric-card { align-items: center; flex-direction: row; }
+      .track-row { grid-template-columns: 52px minmax(0,1fr); gap: 8px; padding: 8px; }
+      .cover-small { width: 52px; height: 52px; }
+      .track-row-bottom { align-items: flex-start; flex-direction: column; }
+      .filter-grid { grid-template-columns: 1fr; }
+      .filter-grid .search-field { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="app-frame"></div>
+  <div id="modal-root"></div>
+  <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    'use strict';
+
+    // Демо-каталог. Ссылки намеренно ведут на несуществующие ID и служат заглушками.
+    const BASE_SELF_TRACKS = [
+      { id: 'lika-puls', title: 'Пульс города', genre: 'Инди-поп', city: 'Казань', date: '2026-10-16', status: 'Опубликован', yandex: 'https://music.yandex.ru/album/00000001/track/11111111', vk: 'https://vk.com/music/playlist/00000001_11111111', color: 'lime', mood: 'Городской' },
+      { id: 'lika-roofs', title: 'На крышах', genre: 'Инди', city: 'Казань', date: '2026-10-22', status: 'На модерации', yandex: '', vk: 'https://vk.com/audio-00000001_22222222', color: 'violet', mood: 'Интроспективный' }
+    ];
+
+    const OTHER_ARTISTS = [
+      {
+        id: 'artist-mira', name: 'mira', city: 'Москва', genre: 'Электроника', mood: 'Ночной', initials: 'mi', color: 'violet',
+        bio: 'Тёплая электроника для ночных поездок и тихих утр.',
+        tracks: [{ id: 'mira-luchi', title: 'Лучи', genre: 'Электроника', city: 'Москва', date: '2026-10-12', status: 'Опубликован', yandex: 'https://music.yandex.ru/album/00000002/track/33333333', vk: '', color: 'violet', mood: 'Ночной' }]
+      },
+      {
+        id: 'artist-sleeping-city', name: 'Сонный город', city: 'Екатеринбург', genre: 'Альтернатива', mood: 'Мечтательный', initials: 'СГ', color: 'blue',
+        bio: 'Гитарные истории на границе сна, шума и большого города.',
+        tracks: [{ id: 'sleeping-neon', title: 'Неоновые сны', genre: 'Альтернатива', city: 'Екатеринбург', date: '2026-10-10', status: 'Опубликован', yandex: 'https://music.yandex.ru/album/00000003/track/44444444', vk: 'https://vk.com/music/playlist/00000003_55555555', color: 'blue', mood: 'Мечтательный' }]
+      },
+      {
+        id: 'artist-fifth-floor', name: 'Пятый этаж', city: 'Санкт-Петербург', genre: 'Инди', mood: 'Городской', initials: '5Э', color: 'amber',
+        bio: 'Инди-поп про соседей, лестничные клетки и знакомые улицы.',
+        tracks: [{ id: 'fifth-stories', title: 'Городские истории', genre: 'Инди', city: 'Санкт-Петербург', date: '2026-10-07', status: 'Опубликован', yandex: '', vk: 'https://vk.com/audio-00000004_66666666', color: 'amber', mood: 'Городской' }]
+      }
+    ];
+
+    const COLORS = {
+      lime: { label: 'Лаймовый импульс', emoji: '✳' },
+      violet: { label: 'Сумеречный фиолетовый', emoji: '☾' },
+      blue: { label: 'Неоновый синий', emoji: '✦' },
+      amber: { label: 'Тёплый янтарь', emoji: '◒' },
+      rose: { label: 'Пыльная роза', emoji: '✿' },
+      mint: { label: 'Мятный воздух', emoji: '〰' }
+    };
+    const STORAGE = {
+      tracks: 'debut:artistTracks', profile: 'debut:artistProfile', favorites: 'debut:favorites',
+      playlist: 'debut:privatePlaylist', notes: 'debut:labelNotes', searches: 'debut:savedSearches',
+      chat: 'debut:chatMessages', offers: 'debut:sentOffers'
+    };
+
+    function clone(value) { return JSON.parse(JSON.stringify(value)); }
+    function readStore(key, fallback) {
+      try {
+        const value = localStorage.getItem(key);
+        return value === null ? clone(fallback) : JSON.parse(value);
+      } catch (_) { return clone(fallback); }
+    }
+    function saveStore(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) { /* Демо продолжает работать и без хранилища. */ }
+    }
+    const DEFAULT_PROFILE = { name: 'Лика Север', city: 'Казань', genre: 'Инди-поп', bio: 'Пишу честные песни о городе и людях.', visible: true };
+    const DEFAULT_CHAT = [
+      { sender: 'label', name: 'Иван Петров', text: 'Привет, Лика! Услышал «Пульс города» — очень точно поймано настроение. Давай обсудим, что ты планируешь дальше?', time: '12:14' },
+      { sender: 'artist', name: 'Лика Север', text: 'Привет! Спасибо, очень приятно. Сейчас заканчиваю ещё пару песен и собираю их в небольшой релиз.', time: '12:21' }
+    ];
+
+    const state = {
+      artistTracks: readStore(STORAGE.tracks, BASE_SELF_TRACKS),
+      profile: readStore(STORAGE.profile, DEFAULT_PROFILE),
+      favorites: readStore(STORAGE.favorites, []),
+      playlist: readStore(STORAGE.playlist, []),
+      notes: readStore(STORAGE.notes, ''),
+      savedSearches: readStore(STORAGE.searches, []),
+      chatMessages: readStore(STORAGE.chat, DEFAULT_CHAT),
+      offers: readStore(STORAGE.offers, [])
+    };
+    const ui = {
+      role: 'artist', profileMenuOpen: false, editingTrackId: null, modal: null,
+      labelFilters: { q: '', genre: '', city: '', mood: '' }, selectedCity: 'all'
+    };
+
+    const GENRES = ['Инди-поп', 'Инди', 'Электроника', 'Хип-хоп', 'Рок', 'Альтернатива'];
+    const CITIES = ['Москва', 'Санкт-Петербург', 'Казань', 'Екатеринбург'];
+    const MOODS = ['Городской', 'Ночной', 'Мечтательный', 'Танцевальный', 'Интроспективный'];
+
+    function esc(value) {
+      return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    }
+    function initials(name) {
+      const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+      if (!parts.length) return 'Д°';
+      if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    function titleCase(value) { return String(value || '').trim(); }
+    function formatDate(value) {
+      if (!value) return 'Дата не указана';
+      const date = new Date(value + 'T12:00:00');
+      return Number.isNaN(date.getTime()) ? esc(value) : date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }).replace(' г.', '');
+    }
+    function safeColor(color) { return Object.prototype.hasOwnProperty.call(COLORS, color) ? color : 'lime'; }
+    function validPlatformUrl(value, platform) {
+      if (!value) return false;
+      const prefix = platform === 'yandex' ? 'https://music.yandex.ru/' : 'https://vk.com/';
+      if (!String(value).startsWith(prefix)) return false;
+      try {
+        const url = new URL(value);
+        return url.protocol === 'https:' && (platform === 'yandex' ? url.hostname === 'music.yandex.ru' : url.hostname === 'vk.com');
+      } catch (_) { return false; }
+    }
+    function coverHtml(track, sizeClass = 'cover-small') {
+      const color = safeColor(track.color);
+      const mark = initials(track.title || 'Д°');
+      return `<div class="cover ${sizeClass} cover--${color}" aria-hidden="true"><span class="cover-mark">${esc(mark)}</span><span class="cover-emoji">${esc(COLORS[color].emoji)}</span></div>`;
+    }
+    function avatarHtml(name, color = 'lime', size = '') {
+      const map = { lime: '', violet: 'avatar-violet', blue: 'avatar-blue', amber: 'avatar-amber', rose: 'avatar-rose', mint: 'avatar-blue' };
+      const extra = size === 'small' ? ' small-avatar' : size === 'large' ? ' large-avatar' : '';
+      return `<div class="avatar ${map[safeColor(color)] || ''}${extra}" aria-hidden="true">${esc(initials(name))}</div>`;
+    }
+    function platformButton(url, platform, compact = false, longLabel = false) {
+      const isYandex = platform === 'yandex';
+      const valid = validPlatformUrl(url, platform);
+      const cls = `platform-button ${isYandex ? 'yandex' : 'vk'}${compact ? ' compact' : ''}`;
+      const name = isYandex ? (longLabel ? 'Яндекс Музыка' : 'Яндекс') : (longLabel ? 'ВК Музыка' : 'ВК');
+      const symbol = isYandex ? 'Я' : 'В';
+      if (!valid) return `<span class="${cls} disabled" aria-disabled="true" title="Для этого трека ссылка не добавлена"><span>${symbol}</span><span>${esc(name)}</span><small>Нет ссылки</small></span>`;
+      return `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener" title="Демо-ссылка — откроется внешняя площадка"><span>${symbol}</span><span>${esc(name)}</span></a>`;
+    }
+    function platformLinks(track, compact = false, longLabel = false) {
+      return `<div class="platform-links">${platformButton(track.yandex, 'yandex', compact, longLabel)}${platformButton(track.vk, 'vk', compact, longLabel)}</div>`;
+    }
+    function statusHtml(status) {
+      const published = status === 'Опубликован';
+      return `<span class="track-status ${published ? 'status-published' : 'status-pending'}">${published ? 'Опубликован' : 'На модерации'}</span>`;
+    }
+    function getSelfTracks() { return Array.isArray(state.artistTracks) ? state.artistTracks : clone(BASE_SELF_TRACKS); }
+    function allCatalogTracks(includePending = true) {
+      const self = getSelfTracks().filter(track => includePending || track.status === 'Опубликован').map(track => ({
+        ...track, artistId: 'artist-lika', artistName: state.profile.name, artistCity: track.city || state.profile.city,
+        artistGenre: state.profile.genre, artistMood: track.mood || 'Городской', artistInitials: initials(state.profile.name), artistColor: 'lime'
+      }));
+      const others = OTHER_ARTISTS.flatMap(artist => artist.tracks.map(track => ({
+        ...track, artistId: artist.id, artistName: artist.name, artistCity: artist.city,
+        artistGenre: artist.genre, artistMood: artist.mood, artistInitials: artist.initials, artistColor: artist.color
+      })));
+      return [...self, ...others];
+    }
+    function getDirectory() {
+      const ownTracks = getSelfTracks().filter(track => track.status === 'Опубликован').map(track => ({ ...track, artistName: state.profile.name }));
+      const own = {
+        id: 'artist-lika', name: state.profile.name, city: state.profile.city, genre: state.profile.genre,
+        mood: 'Городской', initials: initials(state.profile.name), color: 'lime', bio: state.profile.bio,
+        tracks: ownTracks
+      };
+      return [...(state.profile.visible ? [own] : []), ...OTHER_ARTISTS];
+    }
+    function getTrackById(id) { return allCatalogTracks(true).find(track => track.id === id); }
+    function isFavorite(key) { return state.favorites.includes(key); }
+    function toggleFavorite(key) {
+      state.favorites = isFavorite(key) ? state.favorites.filter(item => item !== key) : [...state.favorites, key];
+      saveStore(STORAGE.favorites, state.favorites);
+    }
+    function toast(message, type = 'success') {
+      const root = document.getElementById('toast-root');
+      const item = document.createElement('div');
+      item.className = `toast${type === 'error' ? ' error' : ''}`;
+      item.innerHTML = `<span class="toast-icon">${type === 'error' ? '!' : '✓'}</span><span>${esc(message)}</span>`;
+      root.appendChild(item);
+      setTimeout(() => { item.style.opacity = '0'; item.style.transform = 'translateY(6px)'; setTimeout(() => item.remove(), 220); }, 3100);
+    }
+
+    const NAVS = {
+      artist: [
+        ['artist-profile', '◉', 'Профиль'], ['track-form', '＋', 'Добавить трек'], ['my-tracks', '♫', 'Мои треки', () => getSelfTracks().length]
+      ],
+      label: [
+        ['scout-search', '⌕', 'Поиск артистов'], ['private-playlist', '▣', 'Приватный плейлист', () => state.playlist.length], ['label-notes', '✎', 'Личные заметки']
+      ],
+      listener: [
+        ['weekly', '✦', 'Новые имена'], ['cities', '⌖', 'Найти по городам'], ['discovery-feed', '♫', 'Лента открытий'], ['favorites', '♡', 'Избранное', () => state.favorites.filter(x => x.startsWith('track:')).length]
+      ]
+    };
+    function roleLabel(role) { return ({ artist: 'Артист', label: 'Лейбл', listener: 'Слушатель' })[role] || 'Артист'; }
+    function renderHeader() {
+      const avatar = avatarHtml(state.profile.name, 'lime', 'small');
+      return `<header class="topbar"><div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="ДЕБЮТ — главная"><span class="brand-mark">Д°</span><span><span class="brand-word">ДЕБЮТ°</span><span class="brand-caption">открывай новые имена</span></span></a>
+        <nav class="role-switch" aria-label="Выбрать роль">
+          ${[['artist','♩','Артист'],['label','⌕','Лейбл'],['listener','♫','Слушатель']].map(([role,icon,label]) => `<button class="role-tab ${ui.role === role ? 'active' : ''}" type="button" data-role="${role}" aria-pressed="${ui.role === role}">${icon}&nbsp; ${label}</button>`).join('')}
+        </nav>
+        <div class="topbar-right"><button class="profile-button" type="button" data-action="profile-menu" aria-expanded="${ui.profileMenuOpen}">${avatar}<span class="profile-button-copy"><span class="profile-button-name">${esc(state.profile.name)}</span><span class="profile-button-sub">${esc(roleLabel(ui.role))}</span></span><span class="chevron">⌄</span></button>
+          ${ui.profileMenuOpen ? `<div class="profile-menu"><div class="menu-note">Демо-аккаунт · ${esc(state.profile.city)}</div><button type="button" data-action="edit-profile">✎ &nbsp;Редактировать профиль</button><button type="button" data-action="reset-demo">↺ &nbsp;Сбросить демо-данные</button></div>` : ''}
+        </div>
+      </div></header>`;
+    }
+    function renderSidebar() {
+      const nav = NAVS[ui.role];
+      const sideLinks = nav.map(([id, icon, label, count]) => `<button class="side-link ${id === (ui.role === 'artist' ? 'artist-profile' : ui.role === 'label' ? 'scout-search' : 'weekly') ? 'current' : ''}" type="button" data-scroll-to="${id}"><span class="side-icon">${icon}</span><span>${label}</span>${count ? `<span class="side-count">${count()}</span>` : ''}</button>`).join('');
+      const roleCopy = ui.role === 'artist'
+        ? ['🎙️', 'Твой первый релиз', 'Ссылки ведут на площадки, а профиль остаётся твоей витриной.']
+        : ui.role === 'label'
+          ? ['🧭', 'Скаутинг по делу', 'Сохраняй имена, собирай приватный плейлист и начинай разговор.']
+          : ['✨', 'Слушай снаружи', 'ДЕБЮТ° не хранит аудио — только помогает находить новые имена.'];
+      return `<aside class="sidebar"><div class="side-label">Пространство</div><nav class="side-nav" aria-label="Разделы">${sideLinks}</nav><div class="sidebar-card"><div class="sidebar-card-icon">${roleCopy[0]}</div><strong>${roleCopy[1]}</strong><p>${roleCopy[2]}</p><span class="local-status"><i class="status-dot"></i> Демо работает локально</span></div></aside>`;
+    }
+    function renderFooter() {
+      return `<footer class="app-footer"><span class="footer-logo">ДЕБЮТ° <span style="color:#69736a;font-weight:500">— каталог новых имён</span></span><span class="footer-note">↗ Прослушивание происходит на Яндекс Музыке и ВК Музыке</span></footer>`;
+    }
+    function renderApp() {
+      document.getElementById('app').innerHTML = `${renderHeader()}<main class="shell">${renderSidebar()}<section class="main-content">${renderCurrentPage()}</section></main>${renderFooter()}`;
+      if (ui.role === 'label') renderLabelResults();
+    }
+    function renderCurrentPage() {
+      if (ui.role === 'label') return renderLabelPage();
+      if (ui.role === 'listener') return renderListenerPage();
+      return renderArtistPage();
+    }
+
+    function renderArtistPage() {
+      const tracks = getSelfTracks();
+      const published = tracks.filter(track => track.status === 'Опубликован').length;
+      const pending = tracks.filter(track => track.status !== 'Опубликован').length;
+      const activeLinks = tracks.reduce((n, track) => n + (validPlatformUrl(track.yandex, 'yandex') ? 1 : 0) + (validPlatformUrl(track.vk, 'vk') ? 1 : 0), 0);
+      const profile = state.profile;
+      const editing = ui.editingTrackId ? tracks.find(track => track.id === ui.editingTrackId) : null;
+      return `<div class="page-intro"><div><div class="eyebrow"><i class="eyebrow-dot"></i> Демо-пространство · кабинет артиста</div><h1>Твоя музыка. <span class="accent">Твой первый шаг.</span></h1><p>Покажи себя тем, кто ищет новые голоса. Добавляй ссылки на площадки — здесь музыка не хранится и не воспроизводится.</p></div><div class="intro-chip"><b>LIVE</b> каталог и связи</div></div>
+        <div class="artist-top-grid">
+          <section class="card profile-card" id="artist-profile"><div class="profile-main">${avatarHtml(profile.name, 'lime', 'large')}<div class="profile-copy"><span class="section-kicker">Профиль артиста</span><div class="profile-title-line"><h2>${esc(profile.name)}</h2><span class="profile-tag">✦ Автор на платформе</span></div><div class="profile-meta"><span>⌖ &nbsp;${esc(profile.city)}</span><span>◉ &nbsp;${esc(profile.genre)}</span></div><p class="profile-bio">${esc(profile.bio)}</p></div></div><div class="profile-actions"><div class="visibility-control"><span>${profile.visible ? 'Профиль публичный' : 'Профиль скрыт'}</span><button class="switch ${profile.visible ? 'on' : ''}" type="button" data-action="toggle-visibility" role="switch" aria-checked="${profile.visible}" aria-label="Видимость профиля"></button></div><button class="button-secondary" type="button" data-action="edit-profile">✎ &nbsp;Редактировать профиль</button></div></section>
+          <section class="card request-card" aria-labelledby="request-title"><span class="request-pill">✦ Новый контакт</span><h2 id="request-title">Лейбл запросил контакт</h2><p><span class="request-from">Артём Волков</span> · Северный Ветер</p><blockquote class="request-quote">«Зацепил ваш взгляд на город. Давайте познакомимся?»</blockquote><button class="button" type="button" data-action="open-chat" data-target="Артём Волков · Северный Ветер">Перейти в чат <span>→</span></button></section>
+        </div>
+        <div class="artist-metrics"><div class="metric-card"><span class="metric-icon">♫</span><span><b class="metric-number">${tracks.length}</b><small class="metric-label">треков в каталоге</small></span></div><div class="metric-card"><span class="metric-icon">◉</span><span><b class="metric-number">${published}</b><small class="metric-label">опубликовано</small></span></div><div class="metric-card"><span class="metric-icon">↗</span><span><b class="metric-number">${activeLinks}</b><small class="metric-label">внешних ссылок</small></span></div></div>
+        <div class="artist-workspace-grid">
+          <section class="card form-card" id="track-form"><div class="section-heading"><div><span class="section-kicker">Твоя витрина</span><h2>${editing ? 'Редактировать трек' : 'Добавить трек'}</h2></div><span class="form-note">↗ Только ссылки, без аудиофайлов</span></div>
+            <form id="track-form-element" novalidate><div class="form-grid">
+              <div class="field full"><label for="track-title">Название трека</label><input class="input" id="track-title" name="title" placeholder="Например, Пульс города" value="${editing ? esc(editing.title) : ''}" autocomplete="off"><span class="field-error" data-error-for="title"></span></div>
+              <div class="field"><label for="track-genre">Жанр</label><select class="select" id="track-genre" name="genre">${GENRES.map(g => `<option ${((editing && editing.genre) || profile.genre) === g ? 'selected' : ''}>${esc(g)}</option>`).join('')}</select><span class="field-error" data-error-for="genre"></span></div>
+              <div class="field"><label for="track-city">Город</label><input class="input" id="track-city" name="city" placeholder="Город" value="${editing ? esc(editing.city) : esc(profile.city)}"></div>
+              <div class="field"><label for="track-date">Дата релиза <span class="optional">· необязательно</span></label><input class="input" id="track-date" name="date" type="date" value="${editing ? esc(editing.date || '') : ''}"></div>
+              <div class="field"><label for="track-color">Цвет обложки</label><select class="select" id="track-color" name="color">${Object.entries(COLORS).map(([key, item]) => `<option value="${key}" ${safeColor(editing?.color || 'lime') === key ? 'selected' : ''}>${esc(item.label)}</option>`).join('')}</select></div>
+              <div class="field full"><label for="track-yandex">Ссылка на Яндекс Музыку <span class="optional">· необязательно</span></label><input class="input" id="track-yandex" name="yandex" inputmode="url" placeholder="https://music.yandex.ru/…" value="${editing ? esc(editing.yandex) : ''}"><span class="field-error" data-error-for="yandex"></span></div>
+              <div class="field full"><label for="track-vk">Ссылка на ВК Музыку <span class="optional">· необязательно</span></label><input class="input" id="track-vk" name="vk" inputmode="url" placeholder="https://vk.com/…" value="${editing ? esc(editing.vk) : ''}"><span class="field-error" data-error-for="vk"></span></div>
+              <p class="platform-hint">Ссылки принимаются только с доменов music.yandex.ru и vk.com. Можно оставить любое поле пустым.</p>
+            </div><div class="form-actions"><button class="button" type="submit">${editing ? 'Сохранить изменения' : 'Сохранить трек'} <span>→</span></button><button class="button-secondary" type="button" data-action="clear-track-form">Очистить</button></div></form>
+          </section>
+          <section class="card tracks-card" id="my-tracks"><div class="section-heading"><div><span class="section-kicker">Портфолио</span><h2>Мои треки</h2></div><span class="subtle-count">${tracks.length} ${tracks.length === 1 ? 'трек' : 'треков'}</span></div><div class="track-list">${tracks.length ? tracks.map(renderOwnTrack).join('') : `<div class="empty-state"><span class="empty-icon">♫</span>Здесь появятся добавленные треки.<br>Начни с первой ссылки на релиз.</div>`}</div></section>
+        </div>`;
+    }
+    function renderOwnTrack(track) {
+      return `<article class="track-row">${coverHtml(track)}<div class="track-row-main"><div class="track-row-head"><div style="min-width:0"><h3 title="${esc(track.title)}">${esc(track.title)}</h3><div class="track-meta">${esc(track.genre)} · ${esc(formatDate(track.date))}</div></div>${statusHtml(track.status)}</div><div class="track-row-bottom">${platformLinks(track, true, false)}<div class="track-row-actions"><button class="icon-button" type="button" data-action="edit-track" data-track-id="${esc(track.id)}" title="Редактировать" aria-label="Редактировать ${esc(track.title)}">✎</button><button class="icon-button danger" type="button" data-action="report-track" data-track-id="${esc(track.id)}" title="Сообщить о проблеме" aria-label="Сообщить о проблеме по треку ${esc(track.title)}">⋯</button></div></div></div></article>`;
+    }
+
+    function getFilteredArtists() {
+      const f = ui.labelFilters;
+      const q = f.q.trim().toLocaleLowerCase('ru-RU');
+      return getDirectory().filter(artist => {
+        const haystack = [artist.name, artist.city, artist.genre, artist.bio, ...(artist.tracks || []).map(t => t.title)].join(' ').toLocaleLowerCase('ru-RU');
+        const genreMatch = !f.genre || artist.genre === f.genre || (artist.tracks || []).some(track => track.genre === f.genre);
+        return (!q || haystack.includes(q)) && genreMatch && (!f.city || artist.city === f.city) && (!f.mood || artist.mood === f.mood);
+      });
+    }
+    function renderLabelPage() {
+      const filters = ui.labelFilters;
+      const savedHtml = state.savedSearches.length ? `<div class="saved-searches"><span class="saved-search-label">Сохранённые:</span>${state.savedSearches.map(item => `<button type="button" class="search-chip" data-action="apply-search" data-search-id="${esc(item.id)}">⌕ ${esc(item.name)}</button>`).join('')}</div>` : '';
+      return `<div class="page-intro"><div><div class="eyebrow"><i class="eyebrow-dot"></i> Демо-пространство · кабинет лейбла</div><h1>Найди голос, <span class="accent">который зацепит.</span></h1><p>Ищи артистов по жанру и городу, собирай приватный плейлист и начинай диалог — без лишней дистанции.</p></div><div class="intro-chip"><b>SCOUT MODE</b> локальный каталог</div></div>
+        <section class="card filter-card" id="scout-search"><div class="filter-card-top"><strong>Поиск и фильтры</strong><span>Обновляется в реальном времени</span></div><div class="filter-grid">
+          <div class="field search-field"><label for="label-query">Имя, жанр или город</label><input class="input" id="label-query" name="q" placeholder="Например, Казань или инди" value="${esc(filters.q)}"></div>
+          <div class="field"><label for="label-genre">Жанр</label><select class="select" id="label-genre" name="genre"><option value="">Все жанры</option>${GENRES.map(g => `<option value="${esc(g)}" ${filters.genre === g ? 'selected' : ''}>${esc(g)}</option>`).join('')}</select></div>
+          <div class="field"><label for="label-city">Город</label><select class="select" id="label-city" name="city"><option value="">Все города</option>${CITIES.map(c => `<option value="${esc(c)}" ${filters.city === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}</select></div>
+          <div class="field"><label for="label-mood">Настроение</label><select class="select" id="label-mood" name="mood"><option value="">Любое</option>${MOODS.map(m => `<option value="${esc(m)}" ${filters.mood === m ? 'selected' : ''}>${esc(m)}</option>`).join('')}</select></div>
+          <button class="button-secondary" type="button" data-action="save-search">＋ Сохранить поиск</button>
+        </div>${savedHtml || `<div class="saved-searches"><span class="saved-search-label">Совет:</span><span class="small muted">Сохрани сочетание фильтров, чтобы быстро вернуться к нему.</span></div>`}</section>
+        <div class="label-layout"><section class="results-column"><div class="section-heading"><div><span class="section-kicker">Подборка для скаутинга</span><h2>Найденные артисты</h2></div><span class="subtle-count" id="results-count"></span></div><div class="artist-results" id="label-results"></div></section>
+          <aside class="label-rail"><section class="card rail-card" id="private-playlist"><div class="rail-title"><h3>▣ &nbsp;Приватный плейлист</h3><span class="count">${state.playlist.length} трек.</span></div>${renderPrivatePlaylist()}</section>
+            <section class="card rail-card" id="label-notes"><div class="rail-title"><h3>✎ &nbsp;Личные заметки</h3><span class="notes-save-label">Сохраняются локально</span></div><textarea class="textarea label-note-area" id="label-notes-input" placeholder="Запиши детали: что зацепило, о чём спросить, какие планы у артиста…">${esc(state.notes)}</textarea><div class="small muted" style="margin-top:8px">Заметки видны только в этом демо-браузере.</div></section>
+            <section class="card rail-card"><div class="rail-title"><h3>Аккаунт лейбла</h3></div><div class="label-account">${avatarHtml('Иван Петров','mint','small')}<div class="label-account-copy"><strong>Иван Петров</strong><small>Green Sound Records</small></div></div><div class="verified-account">✓ Представитель подтверждён</div></section>
+          </aside>
+        </div>`;
+    }
+    function renderArtistCard(artist) {
+      const favoriteKey = `artist:${artist.id}`;
+      const trackHtml = artist.tracks.length ? artist.tracks.map(track => `<div class="artist-track-line"><div class="artist-track-name"><strong>${esc(track.title)}</strong><small>${esc(track.genre)} · ${esc(formatDate(track.date))}</small></div>${platformLinks(track, true, false)}<button class="playlist-add ${state.playlist.includes(track.id) ? 'added' : ''}" type="button" data-action="playlist-add" data-track-id="${esc(track.id)}" title="${state.playlist.includes(track.id) ? 'Уже в плейлисте' : 'Добавить в плейлист'}" aria-label="Добавить ${esc(track.title)} в плейлист">${state.playlist.includes(track.id) ? '✓' : '＋'}</button></div>`).join('') : `<div class="empty-state">У артиста пока нет опубликованных треков.</div>`;
+      return `<article class="artist-card"><div class="artist-card-head">${avatarHtml(artist.name, artist.color)}<div class="artist-card-ident"><h3>${esc(artist.name)}</h3><p>⌖ ${esc(artist.city)} &nbsp;·&nbsp; ${esc(artist.genre)}</p></div><div class="artist-head-actions"><button class="favorite-button ${isFavorite(favoriteKey) ? 'is-favorite' : ''}" type="button" data-action="favorite-artist" data-artist-id="${esc(artist.id)}" aria-label="${isFavorite(favoriteKey) ? 'Убрать из избранного' : 'В избранное'}" title="В избранное">${isFavorite(favoriteKey) ? '♥' : '♡'}</button></div></div><div class="verified-tag"><span class="check">✓</span> Представитель подтверждён</div><p class="artist-description">${esc(artist.bio)}</p><div class="artist-tags"><span class="soft-tag">${esc(artist.genre)}</span><span class="soft-tag mood">✦ ${esc(artist.mood)}</span></div><div class="artist-track-list">${trackHtml}</div><div class="artist-card-actions"><button class="button-secondary" type="button" data-action="open-chat" data-artist-id="${esc(artist.id)}" data-target="${esc(artist.name)}">💬 &nbsp;Написать исполнителю</button><button class="button" type="button" data-action="open-offer" data-artist-id="${esc(artist.id)}" data-target="${esc(artist.name)}">✦ &nbsp;Предложить сотрудничество</button></div></article>`;
+    }
+    function renderLabelResults() {
+      const container = document.getElementById('label-results');
+      if (!container) return;
+      const artists = getFilteredArtists();
+      const count = document.getElementById('results-count');
+      if (count) count.textContent = `${artists.length} ${artists.length === 1 ? 'артист' : 'артистов'}`;
+      container.innerHTML = artists.length ? artists.map(renderArtistCard).join('') : `<div class="empty-state"><span class="empty-icon">⌕</span>Никого не нашли. Попробуй изменить фильтры.</div>`;
+    }
+    function renderPrivatePlaylist() {
+      const tracks = state.playlist.map(getTrackById).filter(Boolean);
+      if (!tracks.length) return `<div class="empty-state" style="padding:20px 10px"><span class="empty-icon">▣</span>Добавляй сюда треки из карточек артистов.<br>Плейлист останется приватным.</div>`;
+      return `<div class="playlist-list">${tracks.map(track => `<div class="playlist-entry">${coverHtml(track)}<div class="playlist-entry-copy"><strong>${esc(track.title)}</strong><small>${esc(track.artistName || state.profile.name)} · ${esc(track.genre)}</small></div><button class="remove-playlist" type="button" data-action="playlist-remove" data-track-id="${esc(track.id)}" aria-label="Удалить из плейлиста">×</button></div>`).join('')}</div>`;
+    }
+
+    function renderListenerPage() {
+      const all = allCatalogTracks(false).filter(track => track.artistId !== 'artist-lika' || state.profile.visible);
+      const weekly = all.slice(0, 4);
+      const filtered = ui.selectedCity === 'all' ? all : all.filter(track => track.artistCity === ui.selectedCity);
+      const favoriteTracks = state.favorites.filter(key => key.startsWith('track:')).map(key => getTrackById(key.slice(6))).filter(track => track && track.status === 'Опубликован');
+      return `<div class="page-intro"><div><div class="eyebrow"><i class="eyebrow-dot"></i> Демо-пространство · слушатель</div><h1>Слушай не плейлист. <span class="accent">Ищи имя.</span></h1><p>Открывай артистов до того, как о них заговорят все. Нашёл близкое — переходи слушать на Яндекс Музыку или ВК Музыку.</p></div><div class="intro-chip"><b>${all.length}</b> новых релиза в каталоге</div></div>
+        <section class="editorial-banner"><div class="editorial-banner-copy"><div class="eyebrow"><i class="eyebrow-dot"></i> Новая сцена начинается здесь</div><h2>У каждого большого имени был первый релиз.</h2><p>ДЕБЮТ° — витрина и карта связей для тех, кто только начинает. Мы не храним музыку: только показываем, куда идти дальше.</p></div><div class="banner-note"><strong>Как это работает</strong>Выбирай трек, открывай внешнюю площадку и поддерживай новых артистов своим вниманием.</div></section>
+        <section class="weekly-section" id="weekly"><div class="section-heading"><div><span class="section-kicker">Выбор редакции</span><h2>Новые имена недели</h2></div><span class="subtle-count">${weekly.length} релиза · редакция</span></div><div class="weekly-grid">${weekly.map(track => `<article class="weekly-card">${coverHtml(track)}<div class="weekly-card-copy"><span class="editor-pick">✦ Редакция</span><strong>${esc(track.title)}</strong><small>${esc(track.artistName)} · ${esc(track.artistCity)}</small></div></article>`).join('')}</div></section>
+        <section class="city-filter" id="cities"><span class="city-filter-label">⌖ Найти по городам</span>${[['Москва','Москва'],['Санкт-Петербург','Санкт-Петербург'],['Казань','Казань'],['Екатеринбург','Екатеринбург'],['all','Показать все']].map(([value,label]) => `<button type="button" class="city-chip ${ui.selectedCity === value ? 'active' : ''}" data-action="city-filter" data-city="${esc(value)}">${esc(label)}</button>`).join('')}</section>
+        <section id="discovery-feed"><div class="feed-header"><div><h2>Открой новые имена</h2><p>${ui.selectedCity === 'all' ? 'Свежие релизы из независимой сцены' : `Подборка из города «${esc(ui.selectedCity)}»`}</p></div><span class="subtle-count">${filtered.length} ${filtered.length === 1 ? 'трек' : 'треков'}</span></div><div class="track-grid" id="listener-feed">${filtered.length ? filtered.map(renderDiscoveryCard).join('') : `<div class="empty-state" style="grid-column:1/-1"><span class="empty-icon">⌖</span>Пока нет релизов из этого города.<br>Выбери другой город или покажи все.</div>`}</div></section>
+        <section class="favorites-section" id="favorites"><div class="favorites-heading"><div><span class="section-kicker">Сохранённое</span><h2>Избранное</h2></div><span class="subtle-count">${favoriteTracks.length} ${favoriteTracks.length === 1 ? 'трек' : 'треков'}</span></div><div class="favorites-grid">${favoriteTracks.length ? favoriteTracks.map(renderFavoriteRow).join('') : `<div class="empty-state" style="grid-column:1/-1;padding:17px"><span class="empty-icon">♡</span>Нажми на сердечко у понравившегося релиза — он появится здесь.</div>`}</div></section>`;
+    }
+    function renderDiscoveryCard(track) {
+      const key = `track:${track.id}`;
+      return `<article class="discovery-card"><div class="discovery-card-art">${coverHtml(track, 'cover-card')}<button class="favorite-button ${isFavorite(key) ? 'is-favorite' : ''}" type="button" data-action="favorite-track" data-track-id="${esc(track.id)}" title="${isFavorite(key) ? 'Убрать из избранного' : 'В избранное'}" aria-label="${isFavorite(key) ? 'Убрать из избранного' : 'Добавить в избранное'}">${isFavorite(key) ? '♥' : '♡'}</button></div><div class="discovery-card-copy"><h3>${esc(track.title)}</h3><div class="discovery-artist"><span class="artist-mini-avatar">${esc(track.artistInitials || initials(track.artistName))}</span>${esc(track.artistName)}</div><div class="discovery-tags"><span class="soft-tag">${esc(track.genre)}</span><span class="soft-tag">⌖ ${esc(track.artistCity)}</span></div>${platformLinks(track, false, true)}</div></article>`;
+    }
+    function renderFavoriteRow(track) {
+      return `<div class="favorite-row">${coverHtml(track)}<div class="favorite-row-copy"><strong>${esc(track.title)}</strong><small>${esc(track.artistName)} · ${esc(track.artistCity)}</small></div><button class="icon-button" type="button" data-action="favorite-track" data-track-id="${esc(track.id)}" title="Убрать из избранного">♥</button></div>`;
+    }
+
+    function openModal(type, data = {}) {
+      ui.modal = { type, ...data };
+      ui.profileMenuOpen = false;
+      renderHeaderOnly();
+      renderModal();
+    }
+    function renderHeaderOnly() {
+      const old = document.querySelector('.topbar');
+      if (old) old.outerHTML = renderHeader();
+    }
+    function closeModal() {
+      ui.modal = null;
+      document.getElementById('modal-root').innerHTML = '';
+    }
+    function modalFrame(title, subtitle, body, extraClass = '') {
+      return `<div class="modal-backdrop" data-modal-backdrop><section class="modal ${extraClass}" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><div><h2>${esc(title)}</h2><p>${esc(subtitle)}</p></div><button class="modal-close" type="button" data-action="close-modal" aria-label="Закрыть">×</button></div>${body}</section></div>`;
+    }
+    function renderModal() {
+      const root = document.getElementById('modal-root');
+      if (!ui.modal) { root.innerHTML = ''; return; }
+      const modal = ui.modal;
+      if (modal.type === 'edit-profile') {
+        root.innerHTML = modalFrame('Редактировать профиль', 'Обнови публичные данные артиста.', `<div class="modal-body"><form class="modal-form" id="profile-form"><div class="field"><label for="profile-name">Имя артиста</label><input class="input" id="profile-name" name="name" value="${esc(state.profile.name)}" required></div><div class="field"><label for="profile-city">Город</label><input class="input" id="profile-city" name="city" value="${esc(state.profile.city)}" required></div><div class="field"><label for="profile-genre">Основной жанр</label><select class="select" id="profile-genre" name="genre">${GENRES.map(g => `<option ${state.profile.genre === g ? 'selected' : ''}>${esc(g)}</option>`).join('')}</select></div><div class="field"><label for="profile-bio">О себе</label><textarea class="textarea" id="profile-bio" name="bio" maxlength="180">${esc(state.profile.bio)}</textarea></div><div class="modal-form-actions"><button class="button-secondary" type="button" data-action="close-modal">Отмена</button><button class="button" type="submit">Сохранить профиль</button></div></form></div>`);
+      } else if (modal.type === 'offer') {
+        root.innerHTML = modalFrame('Предложение о сотрудничестве', `Для артиста: ${modal.target || 'новый артист'}.`, `<div class="modal-body"><form class="modal-form" id="offer-form"><div class="field"><label for="offer-sender">Отправитель</label><input class="input" id="offer-sender" name="sender" value="Иван Петров" required></div><div class="field"><label for="offer-label">Лейбл</label><input class="input" id="offer-label" name="label" value="Green Sound Records" required></div><div class="field"><label for="offer-text">Текст предложения</label><textarea class="textarea" id="offer-text" name="text">Привет! Нам близко твоё звучание. Предлагаем обсудить возможное сотрудничество и следующий релиз — будем рады познакомиться.</textarea></div><div class="modal-warning"><span>⚠</span><span>Это не заключает контракт автоматически — условия подтверждают обе стороны.</span></div><div class="modal-form-actions"><button class="button-secondary" type="button" data-action="close-modal">Отмена</button><button class="button" type="submit">Подтвердить отправку</button></div></form></div>`);
+      } else if (modal.type === 'chat') {
+        const target = modal.target || 'артистом';
+        const messages = Array.isArray(state.chatMessages) ? state.chatMessages : clone(DEFAULT_CHAT);
+        const messagesHtml = messages.map(message => {
+          const mine = (ui.role === 'label' && message.sender === 'label') || (ui.role === 'artist' && message.sender === 'artist');
+          return `<div class="chat-message ${mine ? 'mine' : ''}"><span class="chat-who">${esc(message.name || (message.sender === 'label' ? 'Иван Петров' : state.profile.name))}</span><div class="chat-bubble">${esc(message.text)}</div><span class="chat-time">${esc(message.time || '')}</span></div>`;
+        }).join('');
+        root.innerHTML = modalFrame(`Чат · ${target}`, 'Демо-переписка сохраняется локально.', `<div class="chat-window"><div class="chat-messages" id="chat-messages"><div class="chat-day">сегодня</div>${messagesHtml}</div><form class="chat-composer" id="chat-form"><input class="input" name="message" id="chat-message-input" placeholder="Напиши сообщение…" autocomplete="off" aria-label="Сообщение"><button class="button" type="submit">Отправить</button></form></div>`, 'chat-dialog');
+        const list = document.getElementById('chat-messages');
+        if (list) list.scrollTop = list.scrollHeight;
+      } else if (modal.type === 'issue') {
+        root.innerHTML = modalFrame('Сообщить о проблеме', `Трек: ${modal.trackTitle || 'не выбран'}.`, `<div class="modal-body"><form class="modal-form" id="issue-form"><div class="field"><label for="issue-kind">Что случилось?</label><select class="select" id="issue-kind" name="kind"><option>Ссылка не открывается</option><option>Неверная информация о треке</option><option>Проблема с обложкой</option><option>Другое</option></select></div><div class="field"><label for="issue-text">Комментарий <span class="optional">· необязательно</span></label><textarea class="textarea" id="issue-text" name="text" placeholder="Добавь детали, чтобы мы поняли, что проверить."></textarea></div><div class="modal-form-actions"><button class="button-secondary" type="button" data-action="close-modal">Отмена</button><button class="button" type="submit">Отправить сообщение</button></div></form></div>`);
+      }
+      const firstInput = root.querySelector('input, textarea, select');
+      if (firstInput) setTimeout(() => firstInput.focus(), 0);
+    }
+
+    function setLabelFiltersFromUI() {
+      const q = document.getElementById('label-query');
+      const genre = document.getElementById('label-genre');
+      const city = document.getElementById('label-city');
+      const mood = document.getElementById('label-mood');
+      if (!q || !genre || !city || !mood) return;
+      ui.labelFilters = { q: q.value, genre: genre.value, city: city.value, mood: mood.value };
+    }
+    function refreshListenerFeed() {
+      // The listener view is cheap to rebuild and keeps filter chips and favorites in sync.
+      renderApp();
+    }
+    function resetDemo() {
+      Object.values(STORAGE).forEach(key => { try { localStorage.removeItem(key); } catch (_) {} });
+      state.artistTracks = clone(BASE_SELF_TRACKS);
+      state.profile = clone(DEFAULT_PROFILE);
+      state.favorites = [];
+      state.playlist = [];
+      state.notes = '';
+      state.savedSearches = [];
+      state.chatMessages = clone(DEFAULT_CHAT);
+      state.offers = [];
+      ui.labelFilters = { q: '', genre: '', city: '', mood: '' };
+      ui.selectedCity = 'all';
+      ui.editingTrackId = null;
+      ui.profileMenuOpen = false;
+      closeModal();
+      renderApp();
+      toast('Демо-данные сброшены');
+    }
+
+    // Все действия делегированы от document: обработчики переживают перерисовку интерфейса.
+    document.addEventListener('click', event => {
+      const roleButton = event.target.closest('[data-role]');
+      if (roleButton) {
+        ui.role = roleButton.dataset.role;
+        ui.profileMenuOpen = false;
+        ui.modal = null;
+        renderApp();
+        return;
+      }
+      const scrollButton = event.target.closest('[data-scroll-to]');
+      if (scrollButton) {
+        const target = document.getElementById(scrollButton.dataset.scrollTo);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      const actionButton = event.target.closest('[data-action]');
+      if (!actionButton) {
+        if (ui.profileMenuOpen && !event.target.closest('.topbar-right')) { ui.profileMenuOpen = false; renderHeaderOnly(); }
+        if (event.target.matches('[data-modal-backdrop]')) closeModal();
+        return;
+      }
+      const action = actionButton.dataset.action;
+      if (action === 'profile-menu') { ui.profileMenuOpen = !ui.profileMenuOpen; renderHeaderOnly(); return; }
+      if (action === 'edit-profile') { openModal('edit-profile'); return; }
+      if (action === 'toggle-visibility') {
+        state.profile.visible = !state.profile.visible;
+        saveStore(STORAGE.profile, state.profile);
+        renderApp();
+        toast(state.profile.visible ? 'Профиль теперь публичный' : 'Профиль скрыт от каталога');
+        return;
+      }
+      if (action === 'clear-track-form') {
+        ui.editingTrackId = null;
+        renderApp();
+        const form = document.getElementById('track-title'); if (form) form.focus();
+        return;
+      }
+      if (action === 'edit-track') {
+        ui.editingTrackId = actionButton.dataset.trackId;
+        renderApp();
+        const form = document.getElementById('track-form'); if (form) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (action === 'report-track') {
+        const track = getSelfTracks().find(item => item.id === actionButton.dataset.trackId);
+        openModal('issue', { trackTitle: track?.title || '' });
+        return;
+      }
+      if (action === 'open-chat') {
+        const artist = getDirectory().find(item => item.id === actionButton.dataset.artistId);
+        openModal('chat', { target: actionButton.dataset.target || artist?.name || 'Иван Петров' });
+        return;
+      }
+      if (action === 'open-offer') { openModal('offer', { target: actionButton.dataset.target || 'артисту' }); return; }
+      if (action === 'close-modal') { closeModal(); return; }
+      if (action === 'favorite-track') {
+        const key = `track:${actionButton.dataset.trackId}`;
+        toggleFavorite(key);
+        renderApp();
+        toast(isFavorite(key) ? 'Добавлено в избранное' : 'Убрано из избранного');
+        return;
+      }
+      if (action === 'favorite-artist') {
+        const key = `artist:${actionButton.dataset.artistId}`;
+        toggleFavorite(key);
+        renderApp();
+        toast(isFavorite(key) ? 'Артист добавлен в избранное' : 'Артист убран из избранного');
+        return;
+      }
+      if (action === 'playlist-add') {
+        const id = actionButton.dataset.trackId;
+        if (!state.playlist.includes(id)) {
+          state.playlist.push(id); saveStore(STORAGE.playlist, state.playlist); renderApp(); toast('Трек добавлен в приватный плейлист');
+        } else toast('Этот трек уже в плейлисте');
+        return;
+      }
+      if (action === 'playlist-remove') {
+        state.playlist = state.playlist.filter(id => id !== actionButton.dataset.trackId);
+        saveStore(STORAGE.playlist, state.playlist); renderApp(); toast('Трек удалён из плейлиста'); return;
+      }
+      if (action === 'save-search') {
+        setLabelFiltersFromUI();
+        const f = ui.labelFilters;
+        if (!f.q && !f.genre && !f.city && !f.mood) { toast('Сначала задай хотя бы один фильтр', 'error'); return; }
+        const parts = [f.q, f.genre, f.city, f.mood].filter(Boolean);
+        const item = { id: `search-${Date.now()}`, name: parts.join(' · '), ...f };
+        state.savedSearches = [item, ...state.savedSearches].slice(0, 6);
+        saveStore(STORAGE.searches, state.savedSearches);
+        renderApp(); toast('Поиск сохранён'); return;
+      }
+      if (action === 'apply-search') {
+        const search = state.savedSearches.find(item => item.id === actionButton.dataset.searchId);
+        if (!search) return;
+        ui.labelFilters = { q: search.q || '', genre: search.genre || '', city: search.city || '', mood: search.mood || '' };
+        renderApp(); return;
+      }
+      if (action === 'city-filter') {
+        ui.selectedCity = actionButton.dataset.city || 'all';
+        refreshListenerFeed();
+        return;
+      }
+      if (action === 'reset-demo') {
+        ui.profileMenuOpen = false;
+        if (window.confirm('Сбросить все локальные демо-данные и вернуться к исходному состоянию?')) resetDemo();
+        else renderHeaderOnly();
+        return;
+      }
+    });
+
+    document.addEventListener('input', event => {
+      const target = event.target;
+      if (target.id === 'label-query') { setLabelFiltersFromUI(); renderLabelResults(); return; }
+      if (target.id === 'label-notes-input') {
+        state.notes = target.value; saveStore(STORAGE.notes, state.notes); return;
+      }
+      if (target.id === 'track-yandex' || target.id === 'track-vk' || target.id === 'track-title') {
+        const field = target.closest('.field');
+        if (field && field.classList.contains('has-error')) { field.classList.remove('has-error'); const error = field.querySelector('.field-error'); if (error) error.textContent = ''; }
+      }
+    });
+    document.addEventListener('change', event => {
+      if (['label-genre','label-city','label-mood'].includes(event.target.id)) { setLabelFiltersFromUI(); renderLabelResults(); }
+    });
+
+    document.addEventListener('submit', event => {
+      const form = event.target;
+      if (form.id === 'track-form-element') {
+        event.preventDefault();
+        const data = new FormData(form);
+        const title = titleCase(data.get('title'));
+        const genre = String(data.get('genre') || 'Инди-поп');
+        const city = titleCase(data.get('city'));
+        const date = String(data.get('date') || '');
+        const yandex = String(data.get('yandex') || '').trim();
+        const vk = String(data.get('vk') || '').trim();
+        const color = safeColor(String(data.get('color') || 'lime'));
+        const errors = {};
+        if (!title) errors.title = 'Укажи название трека.';
+        if (!city) errors.city = 'Укажи город.';
+        if (yandex && !validPlatformUrl(yandex, 'yandex')) errors.yandex = 'Ссылка должна начинаться с https://music.yandex.ru/';
+        if (vk && !validPlatformUrl(vk, 'vk')) errors.vk = 'Ссылка должна начинаться с https://vk.com/';
+        form.querySelectorAll('.field').forEach(field => field.classList.remove('has-error'));
+        form.querySelectorAll('.field-error').forEach(el => el.textContent = '');
+        Object.entries(errors).forEach(([name, message]) => {
+          const input = form.querySelector(`[name="${name}"]`);
+          const field = input?.closest('.field');
+          if (field) { field.classList.add('has-error'); const error = field.querySelector('.field-error'); if (error) error.textContent = message; }
+        });
+        if (Object.keys(errors).length) { toast(errors.yandex || errors.vk || errors.title || errors.city, 'error'); return; }
+        const existingIndex = getSelfTracks().findIndex(track => track.id === ui.editingTrackId);
+        if (existingIndex >= 0) {
+          state.artistTracks[existingIndex] = { ...state.artistTracks[existingIndex], title, genre, city, date, yandex, vk, color };
+          toast('Изменения сохранены');
+        } else {
+          state.artistTracks.unshift({ id: `track-${Date.now()}-${Math.random().toString(36).slice(2,7)}`, title, genre, city, date, yandex, vk, color, status: 'На модерации', mood: 'Городской' });
+          toast('Трек добавлен на модерацию');
+        }
+        saveStore(STORAGE.tracks, state.artistTracks);
+        ui.editingTrackId = null;
+        renderApp();
+        return;
+      }
+      if (form.id === 'profile-form') {
+        event.preventDefault();
+        const data = new FormData(form);
+        state.profile = { ...state.profile, name: titleCase(data.get('name')) || DEFAULT_PROFILE.name, city: titleCase(data.get('city')) || DEFAULT_PROFILE.city, genre: String(data.get('genre') || DEFAULT_PROFILE.genre), bio: titleCase(data.get('bio')) };
+        saveStore(STORAGE.profile, state.profile);
+        closeModal(); renderApp(); toast('Профиль обновлён'); return;
+      }
+      if (form.id === 'offer-form') {
+        event.preventDefault();
+        const data = new FormData(form);
+        state.offers.unshift({ target: ui.modal?.target || '', sender: String(data.get('sender') || ''), label: String(data.get('label') || ''), text: String(data.get('text') || ''), date: new Date().toISOString() });
+        saveStore(STORAGE.offers, state.offers);
+        closeModal(); toast('Предложение отправлено'); return;
+      }
+      if (form.id === 'chat-form') {
+        event.preventDefault();
+        const input = form.querySelector('[name="message"]');
+        const text = String(new FormData(form).get('message') || '').trim();
+        if (!text) { toast('Напиши сообщение перед отправкой', 'error'); return; }
+        const sender = ui.role === 'label' ? 'label' : 'artist';
+        const name = sender === 'label' ? 'Иван Петров' : state.profile.name;
+        const time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+        state.chatMessages.push({ sender, name, text, time });
+        saveStore(STORAGE.chat, state.chatMessages);
+        renderModal();
+        const nextInput = document.getElementById('chat-message-input'); if (nextInput) nextInput.focus();
+        return;
+      }
+      if (form.id === 'issue-form') { event.preventDefault(); closeModal(); toast('Спасибо, сообщение о проблеме отправлено'); return; }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        if (ui.modal) closeModal();
+        if (ui.profileMenuOpen) { ui.profileMenuOpen = false; renderHeaderOnly(); }
+      }
+    });
+
+    renderApp();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a519b55a2f381490',t:'MTc5MzE4ODA3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
